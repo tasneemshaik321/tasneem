@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repositories Search</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        input { padding: 10px; width: 250px; }
+        button { padding: 10px; margin-left: 5px; cursor: pointer; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+
+    <h2>GitHub Repository Search</h2>
+    <input type="text" id="username" placeholder="Enter GitHub username">
+    <button onclick="fetchRepositories()">Search</button>
+    <div id="result"></div>
+
+    <script>
+        function fetchRepositories() {
+            let username = document.getElementById("username").value;
+            let resultDiv = document.getElementById("result");
+
+            if (username.trim() === "") {
+                resultDiv.innerHTML = "<p class='error'>Please enter a username.</p>";
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+            let url = `https://api.github.com/users/${username}/repos`;
+
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let repos = JSON.parse(xhr.responseText);
+                        if (repos.length === 0) {
+                            resultDiv.innerHTML = `<p class='error'>No repositories found for ${username}.</p>`;
+                            return;
+                        }
+
+                        let tableHTML = `
+                            <h3>Repositories of ${username}</h3>
+                            <table>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Stars</th>
+                                </tr>
+                        `;
+
+                        repos.forEach(repo => {
+                            tableHTML += `
+                                <tr>
+                                    <td><a href="${repo.html_url}" target="_blank">${repo.name}</a></td>
+                                    <td>${repo.description || "No description available"}</td>
+                                    <td>${repo.stargazers_count}</td>
+                                </tr>
+                            `;
+                        });
+
+                        tableHTML += `</table>`;
+                        resultDiv.innerHTML = tableHTML;
+
+                    } else {
+                        resultDiv.innerHTML = "<p class='error'>User not found. Please try again.</p>";
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>
