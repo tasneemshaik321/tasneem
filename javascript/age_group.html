@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Group</title>
+</head>
+<body>
+    <h2>Enter Age to Determine Age Group</h2>
+    <label for="ageInput">Enter Age:</label>
+    <input type="number" id="ageInput" placeholder="Enter Age" min="0">
+    <button onclick="checkAge()">Check Age Group</button>
+    <p id="ageResult"></p>
+
+    <script>
+        function checkAge() {
+            let age = document.getElementById("ageInput").value.trim();
+
+            if (age === "" || isNaN(age) || age < 0) {
+                document.getElementById("ageResult").innerText = "Please enter a valid age!";
+                return;
+            }
+
+            age = parseInt(age);
+            let category = "";
+
+            if (age < 13) category = "Child";
+            else if (age < 20) category = "Teenager";
+            else if (age < 60) category = "Young Adult";
+            else category = "Senior Citizen";
+
+            document.getElementById("ageResult").innerText = "Age Group: " + category;
+        }
+    </script>
+</body>
+</html>

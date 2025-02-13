@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First N Prime Numbers</title>
+    <script>
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function generatePrimes() {
+            const n = parseInt(document.getElementById("numPrimes").value);
+            const primes = [];
+            let num = 2; // Starting point for prime checking
+            
+            while (primes.length < n) {
+                if (isPrime(num)) {
+                    primes.push(num);
+                }
+                num++;
+            }
+            
+            document.getElementById("result").innerHTML = "First " + n + " prime numbers: " + primes.join(", ");
+        }
+    </script>
+</head>
+<body>
+    <h1>Generate First N Prime Numbers</h1>
+    
+    <label for="numPrimes">Enter number N: </label>
+    <input type="number" id="numPrimes" min="1" required>
+    <button onclick="generatePrimes()">Generate Primes</button>
+    
+    <div id="result"></div>
+</body>
+</html>

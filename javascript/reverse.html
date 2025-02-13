@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Reverse string</title>
+    <script>
+       function reverseString(str) {
+    return str.split('').reverse().join('');
+  }
+  function handleClick() {
+            let arr = "Tasneem";  
+            let result = reverseString(arr); 
+            document.getElementById("output").innerText = "Reverse a string: "+result;
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="handleClick()">Try this</button>
+    <p id="output"></p>
+ </body>
+  </html>

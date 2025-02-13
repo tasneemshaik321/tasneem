@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Compiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            font-family: monospace;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #outputBox {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple HTML Compiler</h1>
+    <textarea id="htmlInput" placeholder="Write your HTML code here..."></textarea>
+    <br>
+    <button onclick="compileCode()">Compile</button>
+
+    <div id="outputBox"></div>
+
+    <script>
+        function compileCode() {
+            var userInput = document.getElementById('htmlInput').value;
+            var outputBox = document.getElementById('outputBox');
+            outputBox.innerHTML = userInput;
+        }
+    </script>
+
+</body>
+</html>
