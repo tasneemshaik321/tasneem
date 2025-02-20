@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        form { width: 300px; margin: 0 auto; text-align: left; }
+        label, input { display: block; width: 100%; margin-bottom: 10px; }
+        input { padding: 8px; }
+        button { width: 100%; padding: 10px; background-color: blue; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: darkblue; }
+        .error { color: red; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <span id="nameError" class="error"></span>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age">
+        <span id="ageError" class="error"></span>
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email">
+        <span id="emailError" class="error"></span>
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode">
+        <span id="pincodeError" class="error"></span>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" class="error"></span>
+        <button type="submit">Register</button>
+    </form>
+    <script>
+        function validateForm() {
+            let isValid = true;
+            document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
+            let name = document.getElementById("name").value;
+            if (!/^[A-Za-z ]+$/.test(name)) {
+                document.getElementById("nameError").innerHTML = "Name can only contain alphabets and spaces.";
+                isValid = false;
+            }
+            let age = document.getElementById("age").value;
+            if (!/^(1[89]|[2-5][0-9]|60)$/.test(age)) {
+                document.getElementById("ageError").innerHTML = "Age must be an integer between 18 and 60.";
+                isValid = false;
+            }
+            let email = document.getElementById("email").value;
+            if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                document.getElementById("emailError").innerHTML = "Enter a valid email.";
+                isValid = false;
+            }
+            let pincode = document.getElementById("pincode").value;
+            if (!/^[0-9]{6}$/.test(pincode)) {
+                document.getElementById("pincodeError").innerHTML = "Pincode must be exactly 6 digits.";
+                isValid = false;
+            }
+            let password = document.getElementById("password").value;
+            if (!/(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}/.test(password)) {
+                document.getElementById("passwordError").innerHTML = "Password must be at least 8 characters long and include at least one special character, one digit, one uppercase, and one lowercase letter.";
+                isValid = false;
+            }
+            return isValid;
+        }
+    </script>
+</body>
+</html>

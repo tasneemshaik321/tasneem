@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Repositories</title>
+    <script>
+        function searchRepositories() {
+            let username = document.getElementById("username").value;
+            let resultDiv = document.getElementById("result");
+            if (username.trim() === "") {
+                resultDiv.innerHTML = "<p class='error'>Please enter a username.</p>";
+                return;
+            }
+            let url = https://api.github.com/users/${username}/repos;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("User not found");
+                    }
+                    return response.json();
+                })
+                .then(repos => {
+                    if (repos.length === 0) {
+                        resultDiv.innerHTML = "<p>No repositories found for this user.</p>";
+                        return;
+                    }
+                    let repoTable = `<h3>Repositories of ${username}:</h3>
+                                    <table border='1'>
+                                    <tr><th>Repository Name</th><th>Description</th><th>Language</th><th>Stars</th><th>Link</th></tr>`;
+                    repos.forEach(repo => {
+                        repoTable += `<tr>
+                                        <td>${repo.name}</td>
+                                        <td>${repo.description ? repo.description : "No description"}</td>
+                                        <td>${repo.language ? repo.language : "Not specified"}</td>
+                                        <td>${repo.stargazers_count}</td>
+                                        <td><a href="${repo.html_url}" target="_blank">View</a></td>
+                                      </tr>`;
+                    });
+                    repoTable += "</table>"; 
+                    resultDiv.innerHTML = repoTable;
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = <p class='error'>${error.message}. Please try again.</p>;
+                });
+        }
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .search-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px; }
+        input { padding: 10px; width: 200px; }
+        button { padding: 10px; cursor: pointer; }
+        #result { margin-top: 20px; text-align: center; display: inline-block; width: 80%; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>GitHub User Repositories</h2>
+    <div class="search-container">
+        <input type="text" id="username" placeholder="Enter GitHub username">
+        <button onclick="searchRepositories()">Search</button>
+    </div>
+    <div id="result"></div>
+</body>
+</html>
