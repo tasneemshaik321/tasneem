@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TravelSite</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<a href="index.html" target="_self">Back To Homepage</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">TravelSite</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#carouselExample">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Destinations
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Mountain Adventures</a></li>
+                        <li><a class="dropdown-item" href="#">City Lights</a></li>
+                        <li><a class="dropdown-item" href="#">Beautiful Beaches</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#contactUs">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Carousel -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://placehold.co/1200x400?text=Mountain+Adventures" class="d-block w-100" alt="Mountain Adventures">
+        </div>
+        <div class="carousel-item">
+            <img src="https://placehold.co/1200x400?text=City+Lights" class="d-block w-100" alt="City Lights">
+        </div>
+        <div class="carousel-item">
+            <img src="https://placehold.co/1200x400?text=Beautiful+Beaches" class="d-block w-100" alt="Beautiful Beaches">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+<!-- Gallery -->
+<div class="container text-center my-5">
+    <h2 id="gallery">Gallery</h2>
+    <div class="row">
+        <div class="col-md-4"><img src="https://placehold.co/350x200?text=Destination+1" class="img-fluid my-2"></div>
+        <div class="col-md-4"><img src="https://placehold.co/350x200?text=Destination+2" class="img-fluid my-2"></div>
+        <div class="col-md-4"><img src="https://placehold.co/350x200?text=Destination+3" class="img-fluid my-2"></div>
+        <div class="col-md-4"><img src="https://placehold.co/350x200?text=Destination+4" class="img-fluid my-2"></div>
+        <div class="col-md-4"><img src="https://placehold.co/350x200?text=Destination+5" class="img-fluid my-2"></div>
+        <div class="col-md-4"><img src="https://placehold.co/350x200?text=Destination+6" class="img-fluid my-2"></div>
+    </div>
+</div>
+
+<!-- FAQs -->
+<div class="container my-5">
+    <h2>FAQs</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    What is the best time to travel?
+                </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    The best time to travel depends on your destination, but spring and fall offer pleasant weather and fewer crowds.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Are there group discounts?
+                </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Yes, we offer discounts for groups of 10 or more. Please contact us for details.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact & Booking Button -->
+<div class="text-center my-5">
+    <h2 id="contactUs">Contact Us</h2>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Now</button>
+</div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Booking Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Destination</label>
+                        <select class="form-select">
+                            <option>Choose...</option>
+                            <option>Mountain Adventures</option>
+                            <option>City Lights</option>
+                            <option>Beautiful Beaches</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
