@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+body {
+    background-color: #002244;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+
+/* Navigation */
+nav {
+    background-color: #003366;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 0;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    background-color: #0055aa;
+    padding: 14px 10px;
+    border-radius: 4px;
+}
+
+header {
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Container & FAQ styles */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.85); /* semi-transparent */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 95%;
+    margin: auto;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #003d80;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq {
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    background: white;
+    color: black;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question:hover {
+    background: #f0f0f0;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    background: white;
+    color: black;
+    border-left: 5px solid #007bff;
+}
